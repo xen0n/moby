@@ -14,7 +14,7 @@ func DeviceInfo(fi os.FileInfo) (uint64, uint64, error) {
 		return 0, 0, fmt.Errorf("cannot extract device from os.FileInfo")
 	}
 
-	return getmajor(sys.Rdev), getminor(sys.Rdev), nil
+	return getmajor(uint64(sys.Rdev)), getminor(uint64(sys.Rdev)), nil
 }
 
 // mknod provides a shortcut for syscall.Mknod
