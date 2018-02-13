@@ -298,7 +298,7 @@ func getDevices(path string) (map[deviceKey]string, error) {
 				return fmt.Errorf("%s: unable to convert to system stat", p)
 			}
 
-			key := deviceKey{major(st.Rdev), minor(st.Rdev)}
+			key := deviceKey{major(uint64(st.Rdev)), minor(uint64(st.Rdev))}
 			if _, ok := devices[key]; ok {
 				return nil // skip it if we have already populated the path.
 			}
